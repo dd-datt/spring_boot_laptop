@@ -1,0 +1,31 @@
+- FE_Laptop-master: là Front-end 
+- LaptopStore: là Back-end (Spring Boot)
+
+##### CÁCH CHẠY DỰ ÁN #####
+1. Tạo 2 ternimal để chạy cả Front-end và Back-end.
+    - Import CSDL: CSDL.txt --> Mở CSDL copy đoạn code kia 
+    và paste sang SQL của nền tảng đang dùng.
+
+2. Chạy lệnh trong ternimal 1:
+    cd LaptopStore
+    ./mvnw spring-boot:run
+
+3. Đổi cổng và tên cơ sở dữ liệu theo máy của bạn: 
+    1. cd FE_Laptop-master 
+    2. mở file 
+        LaptopStore/src/main/resources/application.properties
+    chỉnh sửa cổng, tên DB, username, password.
+
+4. Chạy lệnh trong ternimal 2: 
+    cd FE_Laptop-master 
+    npm start
+
+5. Giao diện hiện thị ở trang http://localhost:3000/
+
+
+##### THÔNG TIN TÀI KHOẢN ####
+1. Tài khoản Admin
+    admin
+    123456
+
+2. Tài khoản người dùng 
