@@ -17,7 +17,7 @@
 
 ### 2. Cấu hình Backend (`LaptopStore`)
 
-1. Mở file `LaptopStore/src/main/resources/application.properties`.
+1. Mở file `LaptopStore/src/main/resources/application.properties.example`. Tạo 1 bản sao tên `application.properties`
 2. Chỉnh sửa các thông tin sau để phù hợp với môi trường của bạn:
    - **Cổng chạy của backend (nếu cần):** `server.port`
    - **Tên cơ sở dữ liệu:** `spring.datasource.url`
