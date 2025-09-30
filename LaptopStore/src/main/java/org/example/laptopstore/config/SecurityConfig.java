@@ -50,7 +50,10 @@ public class SecurityConfig {
             "/ws/**", // websocket
             "api/v1/districts/**",
             "api/v1/wards/**",
-            "api/v1/provinces/**"
+            "api/v1/provinces/**",
+
+            // Public AI chat endpoint
+            "/api/ai-chat/**"
 
     };
 
@@ -59,19 +62,18 @@ public class SecurityConfig {
             throws Exception {
 
         return httpSecurity
+                .cors(cors -> cors.configurationSource(corsConfigurationSource()))
                 .csrf(AbstractHttpConfigurer::disable) // Vô hiệu hóa CSRF
                 .authorizeHttpRequests(auth -> auth
+                        .requestMatchers(HttpMethod.OPTIONS, "/**").permitAll()
                         .requestMatchers(HttpMethod.POST, AUTH_WHITELIST).permitAll()
                         .requestMatchers(HttpMethod.GET, AUTH_WHITELIST).permitAll()
                         .requestMatchers("/ws").permitAll()
                         .requestMatchers(AUTH_WHITELIST).permitAll()
-                        .anyRequest().authenticated()
-                )
+                        .anyRequest().authenticated())
                 .oauth2ResourceServer(oauth2 -> oauth2.jwt(jwtConfigurer -> jwtConfigurer.decoder(jwtDecoder())))
                 .build();
     }
-
-
 
     @Bean
     public JwtDecoder jwtDecoder() {
@@ -84,8 +86,10 @@ public class SecurityConfig {
     @Bean
     public CorsConfigurationSource corsConfigurationSource() {
         CorsConfiguration corsConfiguration = new CorsConfiguration();
-        corsConfiguration.setAllowedOrigins(List.of("http://localhost:3000","https://autocareerbridge.web.app","http://127.0.0.1:5500"));
-        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTION"));
+        corsConfiguration.setAllowedOrigins(
+                List.of("http://localhost:3000", "https://autocareerbridge.web.app", "http://127.0.0.1:5500"));
+        // Ensure OPTIONS is allowed for CORS preflight
+        corsConfiguration.setAllowedMethods(List.of("GET", "POST", "PUT", "DELETE", "OPTIONS", "PATCH"));
         corsConfiguration.setAllowCredentials(true);
         corsConfiguration.setAllowedHeaders(List.of("*"));
         UrlBasedCorsConfigurationSource urlBasedCorsConfigurationSource = new UrlBasedCorsConfigurationSource();
