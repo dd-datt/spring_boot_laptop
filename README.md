@@ -70,5 +70,5 @@ Sau khi hoàn tất, giao diện sẽ được hiển thị tại địa chỉ:
 
 ### 2. Tài khoản người dùng
 
-- **Tên đăng nhập:** `...`
-- **Mật khẩu:** `...`
+- **Tên đăng nhập:** `dat`
+- **Mật khẩu:** `123456`
