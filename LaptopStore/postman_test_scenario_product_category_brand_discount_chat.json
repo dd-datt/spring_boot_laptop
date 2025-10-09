@@ -1,0 +1,262 @@
+{
+  "info": {
+    "name": "LaptopStore API Test - Product, Category, Brand, Discount, Chat (POST/PUT Success Only)",
+    "description": "Kịch bản test các chức năng POST, PUT thành công cho Product, Category, Brand, Discount, Chat API.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "Auth - Login",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"username\": \"admin\",\n  \"password\": \"123456\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/auth/login",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "auth", "login"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Product - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Laptop Test", "type": "text" },
+            { "key": "description", "value": "Laptop for testing", "type": "text" },
+            { "key": "brandId", "value": "1", "type": "text" },
+            { "key": "categoryId", "value": "1", "type": "text" },
+            { "key": "options[0].name", "value": "Laptop Test Option", "type": "text" },
+            { "key": "options[0].price", "value": "15000000", "type": "text" },
+            { "key": "options[0].quantity", "value": "10", "type": "text" },
+            { "key": "options[0].ram", "value": "8GB", "type": "text" },
+            { "key": "options[0].storage", "value": "256GB SSD", "type": "text" },
+            { "key": "options[0].cpu", "value": "Intel Core i5", "type": "text" },
+            { "key": "options[0].gpu", "value": "Intel UHD Graphics", "type": "text" },
+            { "key": "options[0].screen", "value": "15.6 inch", "type": "text" },
+            { "key": "imageThumbnails", "value": "", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/products/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "products", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Product - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Laptop Test Updated", "type": "text" },
+            { "key": "description", "value": "Laptop for testing updated", "type": "text" },
+            { "key": "brandId", "value": "1", "type": "text" },
+            { "key": "categoryId", "value": "1", "type": "text" },
+            { "key": "options[0].name", "value": "Laptop Test Option Updated", "type": "text" },
+            { "key": "options[0].price", "value": "16000000", "type": "text" },
+            { "key": "options[0].quantity", "value": "15", "type": "text" },
+            { "key": "options[0].ram", "value": "16GB", "type": "text" },
+            { "key": "options[0].storage", "value": "512GB SSD", "type": "text" },
+            { "key": "options[0].cpu", "value": "Intel Core i7", "type": "text" },
+            { "key": "options[0].gpu", "value": "NVIDIA GTX 1650", "type": "text" },
+            { "key": "options[0].screen", "value": "15.6 inch FHD", "type": "text" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/products/update/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "products", "update", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Category - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Gaming", "type": "text" },
+            { "key": "image", "value": "", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/categories/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "categories", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Category - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Gaming Updated", "type": "text" },
+            { "key": "image", "value": "", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/categories/update/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "categories", "update", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Brand - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Dell", "type": "text" },
+            { "key": "image", "value": "", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/brands/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "brands", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Brand - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "multipart/form-data" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "formdata",
+          "formdata": [
+            { "key": "name", "value": "Dell Updated", "type": "text" },
+            { "key": "image", "value": "", "type": "file" }
+          ]
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/brands/update/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "brands", "update", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Discount - Create",
+      "request": {
+        "method": "POST",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Giảm giá 10%\",\n  \"discountType\": \"PERCENT\",\n  \"discountValue\": 10,\n  \"quantity\": 100,\n  \"code\": \"DISCOUNT10\",\n  \"startDate\": \"2024-01-01T00:00:00\",\n  \"endDate\": \"2024-12-31T23:59:59\",\n  \"isActive\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/discounts/create",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "discounts", "create"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Discount - Update",
+      "request": {
+        "method": "PUT",
+        "header": [
+          { "key": "Content-Type", "value": "application/json" },
+          { "key": "Authorization", "value": "Bearer {{token}}", "type": "text" }
+        ],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"name\": \"Giảm giá 15%\",\n  \"discountType\": \"PERCENT\",\n  \"discountValue\": 15,\n  \"quantity\": 50,\n  \"code\": \"DISCOUNT15\",\n  \"startDate\": \"2024-01-01T00:00:00\",\n  \"endDate\": \"2024-12-31T23:59:59\",\n  \"isActive\": true\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/v1/discounts/update/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "v1", "discounts", "update", "1"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Chat - AI Ask",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Tôi muốn tư vấn laptop gaming dưới 20 triệu.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8081/api/ai-chat/ask",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8081",
+          "path": ["api", "ai-chat", "ask"]
+        }
+      },
+      "response": []
+    }
+  ]
+}

@@ -1,0 +1,130 @@
+{
+  "info": {
+    "name": "LaptopStore API Test",
+    "description": "Kịch bản test đầy đủ các chức năng GET, POST, PUT, DELETE và validate cho các API của LaptopStore.",
+    "schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+  },
+  "item": [
+    {
+      "name": "AI Chat - Ask",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"question\": \"Tôi muốn mua laptop cho công việc văn phòng, giá dưới 15 triệu.\"\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/ai-chat/ask",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "ai-chat", "ask"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cart - Get Items By User",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/cart/1?page=0&size=5",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "cart", "1"],
+          "query": [
+            { "key": "page", "value": "0" },
+            { "key": "size", "value": "5" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cart - Insert Item",
+      "request": {
+        "method": "POST",
+        "header": [{ "key": "Content-Type", "value": "application/json" }],
+        "body": {
+          "mode": "raw",
+          "raw": "{\n  \"productOptionId\": 1,\n  \"quantity\": 2,\n  \"userId\": 1\n}"
+        },
+        "url": {
+          "raw": "http://localhost:8080/api/v1/cart/insert",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "cart", "insert"]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cart - Update Item Quantity",
+      "request": {
+        "method": "POST",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/cart/update?id=1&quantity=3",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "cart", "update"],
+          "query": [
+            { "key": "id", "value": "1" },
+            { "key": "quantity", "value": "3" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cart - Delete Item",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/cart/only?id=1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "cart", "only"],
+          "query": [{ "key": "id", "value": "1" }]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cart - Delete List Items",
+      "request": {
+        "method": "DELETE",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/cart?listId=1&listId=2",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "cart"],
+          "query": [
+            { "key": "listId", "value": "1" },
+            { "key": "listId", "value": "2" }
+          ]
+        }
+      },
+      "response": []
+    },
+    {
+      "name": "Cart - Get Total Quantity",
+      "request": {
+        "method": "GET",
+        "url": {
+          "raw": "http://localhost:8080/api/v1/cart/total/1",
+          "protocol": "http",
+          "host": ["localhost"],
+          "port": "8080",
+          "path": ["api", "v1", "cart", "total", "1"]
+        }
+      },
+      "response": []
+    }
+  ]
+}
